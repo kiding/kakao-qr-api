@@ -1,0 +1,15 @@
+{
+  "name": "kakao-qr-api",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "kiding",
+  "license": "MIT",
+  "dependencies": {
+    "chrome-aws-lambda": "^5.3.0",
+    "node-fetch": "^2.6.1",
+    "puppeteer-core": "^5.3.1"
+  },
+  "devDependencies": {
+    "puppeteer": "^5.3.1"
+  }
+}
