@@ -122,7 +122,7 @@ ROLE_ARN=$(
     --query 'Role.Arn'
 )
 
-USER_ID=$(aws iam get-user --query 'User.UserId')
+AWS_ID=$(aws sts get-caller-identity --query Account)
 
 aws iam put-role-policy \
   --role-name "$PROJECT_NAME" \
@@ -135,7 +135,7 @@ aws iam put-role-policy \
       "Sid": "LogGroup",
       "Effect": "Allow",
       "Action": "logs:CreateLogGroup",
-      "Resource": "arn:aws:logs:'"$AWS_REGION"':'"$USER_ID"':log-group:*"
+      "Resource": "arn:aws:logs:'"$AWS_REGION"':'"$AWS_ID"':log-group:*"
     },
     {
       "Sid": "LogStream",
@@ -144,7 +144,7 @@ aws iam put-role-policy \
         "logs:CreateLogStream",
         "logs:PutLogEvents"
       ],
-      "Resource": "arn:aws:logs:'"$AWS_REGION"':'"$USER_ID"':log-group:/aws/lambda/'"$PROJECT_NAME"':*"
+      "Resource": "arn:aws:logs:'"$AWS_REGION"':'"$AWS_ID"':log-group:/aws/lambda/'"$PROJECT_NAME"':*"
     },
     {
       "Sid": "LambdaFunction",
@@ -154,7 +154,7 @@ aws iam put-role-policy \
         "lambda:UpdateFunctionConfiguration",
         "lambda:GetFunctionConfiguration"
       ],
-      "Resource": "arn:aws:lambda:'"$AWS_REGION"':'"$USER_ID"':function:'"$PROJECT_NAME"'"
+      "Resource": "arn:aws:lambda:'"$AWS_REGION"':'"$AWS_ID"':function:'"$PROJECT_NAME"'"
     }
   ]
 }' \
