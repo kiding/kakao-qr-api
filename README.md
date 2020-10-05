@@ -8,6 +8,8 @@
 
 ## 사용 방법
 
+카카오톡 앱의 QR 체크인 서비스를 사용하여 인증 및 동의 과정을 최초 한번 이상 거친 경우에만 사용할 수 있습니다.
+
 ### API 배포
 
 * [Amazon Web Services](http://aws.amazon.com) 계정과 [액세스 키 정보](https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/cli-configure-quickstart.html#cli-configure-quickstart-creds)가 필요합니다.
