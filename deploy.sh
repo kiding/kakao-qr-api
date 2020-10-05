@@ -122,8 +122,7 @@ ROLE_ARN=$(
     --query 'Role.Arn'
 )
 
-USER_ID=$(aws iam get-user --query 'User.UserId')
-AWS_ID=$(aws sts get-caller-identity --query Account --output text)
+AWS_ID=$(aws sts get-caller-identity --query Account)
 
 aws iam put-role-policy \
   --role-name "$PROJECT_NAME" \
